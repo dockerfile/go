@@ -8,13 +8,20 @@
 FROM dockerfile/ubuntu
 
 # Install Go
-RUN apt-get install -y golang
+RUN \
+  mkdir -p /goroot && \
+  curl https://storage.googleapis.com/golang/go1.3.1.linux-amd64.tar.gz | tar xvzf - -C /goroot --strip-components=1
+
+# Set environment variables.
+ENV GOROOT /goroot
+ENV GOPATH /gopath
+ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin
 
 # Define mountable directories.
-VOLUME ["/data"]
+VOLUME ["/data", "/goroot", "/gopath"]
 
 # Define working directory.
-WORKDIR /data
+WORKDIR /gopath
 
 # Define default command.
 CMD ["bash"]
