@@ -15,7 +15,7 @@ RUN \
 # Set environment variables.
 ENV GOROOT /goroot
 ENV GOPATH /gopath
-ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin
+ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
 # Define mount points.
 VOLUME ["/data"]
