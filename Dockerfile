@@ -17,9 +17,6 @@ ENV GOROOT /goroot
 ENV GOPATH /gopath
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
-# Define mount points.
-VOLUME ["/data"]
-
 # Define working directory.
 WORKDIR /gopath
 
